@@ -1,5 +1,5 @@
 # Starry-Sky-Guide
 
 機械学習と衛星データを用いることによって、｢どこが、どのくらい星空が綺麗か」が客観的に分かる星空マップを作成した。
-
-星空マップは「星空の案内人」というwebサイトを作成して、公開した。webサイトはこちらです-> http://spacetech.snowycat.info/
+星空マップは「星空の案内人」というwebサイトを作成して、公開した。
+webサイトはこちらです-> http://spacetech.snowycat.info/
