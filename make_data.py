@@ -1,5 +1,7 @@
 import pandas as pd
 import numpy as np
+from tqdm import tqdm
+
 
 # ピクセルの緯度経度を返す関数
 def pixel_to_latlng(pixel_x, pixel_y,zoom = 7):
@@ -60,21 +62,21 @@ def get_latlon_height():
     ans = ans[~((ans['緯度']>33.491016)&(ans['経度']<128.979492))]
     ans = ans[~((ans['緯度']>32.768800)&(ans['経度']<127.199707))]
 
-    ans.to_pickle('jp.pickle')
+    ans.to_pickle('DATA/jp.pickle')
 
 if __name__ == '__main__':
     # 緯度経度データとその地点の標高データ
-    data = pd.read_pickle('jp.pickle')
+    get_latlon_height()
+    data = pd.read_pickle('DATA/jp.pickle')
+
     # NO2とCOのデータ
-    air_df = pd.read_pickle('air.pickle')
+    air_df = pd.read_pickle('DATA/air.pickle')
+    
     # 夜間光データ
-    light_df = pd.read_pickle('light.pickle')
+    light_df = pd.read_pickle('DATA/light.pickle')
 
     # 緯度経度、標高データに合わせてNO2、CO、夜間光データを合体する
-    from tqdm import tqdm
-
     ans=[]
-
     for x,y,h in tqdm(zip(data['経度'], data['緯度'], data['標高'])):
         z1 = air_df[(air_df['x_min']<x) & (x < air_df['x_max']) & (air_df['y_min']<y) & (y < air_df['y_max'])]
         z2 = z1['no2'].values.mean()
@@ -85,3 +87,4 @@ if __name__ == '__main__':
             
 
     ans = pd.DataFrame(ans,columns=['NO2','CO','light','標高','緯度','経度'])
+    ans.to_pickle('DATA/data.pickle')
