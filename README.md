@@ -9,3 +9,10 @@
 `analize.ipynb` : 特徴量を解析したnotebook
 
 `make_map.ipynb` : 星空のキレイ度を予測した結果を星空マップとして表示するためにgeojsonファイルを作成したnotebook
+
+## DATA
+星空のキレイ度 : [[環境省] 星空を見よう](https://www.env.go.jp/air/life/hoshizorakansatsu/index.html)
+
+NO2, CO, 夜間光 : [google earth engine](https://www.google.com/intl/ja_ALL/earth/education/tools/google-earth-engine/)
+
+標高 : [国土地理院](https://www.gsi.go.jp/)
